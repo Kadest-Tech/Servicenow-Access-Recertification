@@ -203,11 +203,11 @@ The same list, viewed by three different people:
 
 ![Requester view](screenshots/01-impersonation-david-loo.png)
 
-**Access manager — sees all 17**
+**Access manager — sees all 16**
 
 ![Access manager view](screenshots/02-impersonation-Abel-Tuter.png)
 
-**Administrator — sees all 17**
+**Administrator — sees all 16**
 
 ![Administrator view](screenshots/03-Security%20Admin%20impersonation.png)
 
