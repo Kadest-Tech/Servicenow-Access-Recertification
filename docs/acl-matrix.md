@@ -1,4 +1,4 @@
-![Access Recertification banner](../assets/Banner.png)
+![Access Recertification banner](docs/banner.svg)
 
 # Access Control Matrix
 
