@@ -83,6 +83,14 @@ Read this as two separate stories running side by side.
 
 ![How a request becomes access, and how access gets reviewed](docs/architecture.svg)
 
+**Flow 1 — the approval path.** Looks up the requester's manager, routes for approval, then branches.
+
+![Flow 1 canvas](screenshots/07-flow1-canvas.png)
+
+**Flow 2 — the recertification path.** The guard is action 2. Everything under it only runs when no round is open.
+
+![Flow 2 canvas](screenshots/04-flow2-canvas.png)
+
 | Story 1 — Someone asks for access | Story 2 — Time to check old access |
 |---|---|
 | 1. A user fills out a short form in the portal. | 1. A scheduled job wakes up on the first of the month. |
@@ -124,6 +132,24 @@ Read this as two separate stories running side by side.
 | Data stays correct | Business rule updates the original record automatically |
 | Shows the big picture | Four reports on access and review results |
 
+**What a user actually sees.** The request form in the Service Portal.
+
+![Service Portal request form](screenshots/09-service-portal-form.png)
+
+**The form reacting.** Choosing "Revoke" makes the reason field appear and turns it mandatory.
+
+![UI Policy in action](screenshots/11-ui-policy-revocation-reason.png)
+
+**The four reports.**
+
+![Access items by status](screenshots/Report-Access%20Items%20by%20Status.png)
+
+![Access items by application](screenshots/Report-Access%20Items%20by%20Application.png)
+
+![Privileged and admin access by application](screenshots/Report-%20Privileged%20and%20Admin%20Access%20by%20Application.png)
+
+![Access reviews by decision](screenshots/Report-reviews-by-decision.png)
+
 ---
 
 ## 06. How the security works
@@ -131,6 +157,10 @@ Read this as two separate stories running side by side.
 Full details are documented in [`docs/acl-matrix.md`](docs/acl-matrix.md)
 
 Three ideas run through the whole design:
+
+All 23 access control rules for this application:
+
+![ACL list](screenshots/08-acl-list.png)
 
 ### 1. Anyone can ask. Almost nobody can see.
 
@@ -166,6 +196,20 @@ Logging in as a normal user showed every record in the system, not just that use
 The rule was fine. The test account had a leftover `admin` grant that nobody remembered assigning. Administrators bypass record-level security by design, so the rule never ran.
 
 Removing that single grant automatically removed **120 other roles** that came with it. The account dropped to two roles, both inherited from group membership. Retesting immediately produced the correct result.
+
+The same list, viewed by three different people:
+
+**Requester — sees 5 records, all their own**
+
+![Requester view](screenshots/01-impersonation-david-loo.png)
+
+**Access manager — sees all 17**
+
+![Access manager view](screenshots/02-impersonation-Abel-Tuter.png)
+
+**Administrator — sees all 17**
+
+![Administrator view](screenshots/03-Security%20Admin%20impersonation.png)
 
 > [!CAUTION]
 > This is the application's own point, proved on the application itself: a forgotten permission sat unnoticed until something forced a check. That is precisely what access recertification exists to find.
@@ -203,6 +247,14 @@ If yes, it stops immediately and creates nothing.
 The result is the same whether it runs monthly, weekly, or twice in a row: it never creates duplicate work. The actual timing is controlled by when someone closes the current round.
 
 Two execution logs in `/screenshots/` show both outcomes: one run that created the work and one that correctly refused.
+
+**Run 1 — no round open, so it works.** All 8 actions complete. The loop runs 11 times.
+
+![Evaluated True](screenshots/05-flow2-log-evaluated-true.png)
+
+**Run 2 — a round is already open, so it stops.** Action 2 evaluates false. Nothing below it runs.
+
+![Evaluated False](screenshots/06-flow2-log-evaluated-false.png)
 
 ### Other simplifications
 
