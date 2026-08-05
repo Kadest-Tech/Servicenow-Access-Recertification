@@ -1,4 +1,4 @@
-![Access Recertification banner](assets/Banner.png)
+![Access Recertification banner](docs/banner.svg)
 
 # Access Recertification
 
@@ -81,6 +81,8 @@ Three kinds of people use the app, and each one can do different things:
 
 Read this as two separate stories running side by side.
 
+![How a request becomes access, and how access gets reviewed](docs/architecture.svg)
+
 | Story 1 — Someone asks for access | Story 2 — Time to check old access |
 |---|---|
 | 1. A user fills out a short form in the portal. | 1. A scheduled job wakes up on the first of the month. |
@@ -92,6 +94,8 @@ Read this as two separate stories running side by side.
 ---
 
 ## 04. The three tables
+
+![The three tables and how they connect](docs/data-model.svg)
 
 | Table | Plain-English meaning | Example |
 |---|---|---|
@@ -124,7 +128,7 @@ Read this as two separate stories running side by side.
 
 ## 06. How the security works
 
-Full details are documented in [`docs/ACL-Matrix.md`](docs/ACL-Matrix.md).
+Full details are documented in [`docs/acl-matrix.md`](docs/acl-matrix.md)
 
 Three ideas run through the whole design:
 
@@ -231,7 +235,7 @@ Importing the update set gives you a working but empty application. Add your own
 ## 10. Install it yourself
 
 1. In ServiceNow, go to **System Update Sets → Retrieved Update Sets → Import Update Set from XML**.
-2. Upload `/update-set/access-recertification_v1.xml`.
+2. Upload `Access-Recertification_v1.xml
 3. Select **Preview**, resolve anything flagged, and then select **Commit**.
 4. Create the three groups and assign the four roles.
 5. Add access records or submit one through the catalog form.
