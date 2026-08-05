@@ -1,4 +1,4 @@
-![Access Recertification banner](docs/banner.svg)
+![Access Recertification banner](banner.svg)
 
 # Access Control Matrix
 
@@ -129,7 +129,7 @@ The row-level read control was verified functionally rather than by inspecting A
 
 | Session | Records visible | Expected |
 |---|---:|---|
-| Requester (`.user`, 4 own entitlements) | 4 | Own records only |
+| Requester (`.user`, 5 own entitlements) | 5 | Own records only |
 | Access Manager (`.access_manager`) | 16 | All records |
 | Administrator | 16 | All records |
 
