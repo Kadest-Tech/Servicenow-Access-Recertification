@@ -235,7 +235,7 @@ Importing the update set gives you a working but empty application. Add your own
 ## 10. Install it yourself
 
 1. In ServiceNow, go to **System Update Sets → Retrieved Update Sets → Import Update Set from XML**.
-2. Upload `Access-Recertification_v1.xml
+2. Upload `update-set/Access-Recertification_v1.xml`
 3. Select **Preview**, resolve anything flagged, and then select **Commit**.
 4. Create the three groups and assign the four roles.
 5. Add access records or submit one through the catalog form.
