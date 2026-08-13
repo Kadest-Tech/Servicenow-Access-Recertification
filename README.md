@@ -4,7 +4,7 @@
 
 A ServiceNow scoped application that identifies access people should no longer have and sends that access to a real person for review and sign-off.
 
-**Companion project:** [Entra ID Identity Governance Toolkit](https://github.com/Kadest-Tech/entra-identity-governance-toolkit) and [Servicenow-IRM-GRC-Program
+**Companion projects:** [Entra ID Identity Governance Toolkit](https://github.com/Kadest-Tech/entra-identity-governance-toolkit) and [Servicenow-IRM-GRC-Program
 ](https://github.com/Kadest-Tech/servicenow-irm-grc-program) — the directory/IdP half of the same identity-governance story.
 
 ## Project Overview
